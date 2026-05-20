@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>я обосрался жидко</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Orbitron',sans-serif;
+    background:
+    linear-gradient(135deg,#10173d,#0a0a0a);
+    color:white;
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+/* BACKGROUND */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+    repeating-linear-gradient(
+        90deg,
+        rgba(255,255,255,0.03) 0px,
+        rgba(255,255,255,0.03) 1px,
+        transparent 1px,
+        transparent 90px
+    );
+    animation:bgMove 10s linear infinite;
+    z-index:-1;
+}
+
+@keyframes bgMove{
+    from{
+        transform:translateX(0);
+    }
+    to{
+        transform:translateX(90px);
+    }
+}
+
+/* HEADER */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:999;
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    padding:20px;
+    background:rgba(0,0,0,0.4);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+    flex-wrap:wrap;
+}
+
+.tab{
+    padding:15px 28px;
+    border-radius:14px;
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.1);
+    cursor:pointer;
+    transition:0.25s;
+    user-select:none;
+}
+
+.tab:hover{
+    transform:translateY(-3px);
+}
+
+.tab.active{
+    background:linear-gradient(45deg,#00bfff,#0044ff);
+    box-shadow:
+    0 0 20px rgba(0,180,255,0.7);
+}
+
+/* PAGE */
+
+.page{
+    display:none;
+    padding:40px;
+}
+
+.page.active{
+    display:block;
+}
+
+/* TITLE */
+
+.title{
+    text-align:center;
+    font-size:48px;
+    margin-bottom:40px;
+    color:#00d9ff;
+    text-shadow:
+    0 0 15px #00d9ff,
+    0 0 40px #00d9ff;
+}
+
+/* GRID */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+    gap:30px;
+}
+
+/* CARD */
+
+.card{
+    background:
+    linear-gradient(
+        135deg,
+        rgba(30,40,100,0.95),
+        rgba(10,10,20,0.95)
+    );
+
+    border-radius:25px;
+    padding:25px;
+    border:1px solid rgba(255,255,255,0.08);
+    position:relative;
+    overflow:hidden;
+}
+
+.card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background:
+    linear-gradient(
+        45deg,
+        transparent,
+        rgba(255,255,255,0.04),
+        transparent
+    );
+
+    animation:shine 5s linear infinite;
+
+    pointer-events:none;
+}
+
+@keyframes shine{
+    from{
+        transform:translateX(-100%);
+    }
+    to{
+        transform:translateX(100%);
+    }
+}
+
+h2{
+    margin-bottom:18px;
+    font-size:22px;
+}
+
+textarea{
+    width:100%;
+    height:120px;
+
+    border:none;
+    outline:none;
+    resize:none;
+
+    border-radius:18px;
+
+    padding:18px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #040b2c,
+        #08102f
+    );
+
+    border:2px solid rgba(255,255,255,0.05);
+
+    color:white;
+
+    font-size:16px;
+
+    position:relative;
+    z-index:2;
+}
+
+button{
+    width:100%;
+    margin-top:20px;
+    padding:18px;
+
+    border:none;
+    border-radius:18px;
+
+    background:
+    linear-gradient(
+        90deg,
+        #21bbff,
+        #1558ff
+    );
+
+    color:white;
+    font-size:18px;
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:0.2s;
+
+    position:relative;
+    z-index:10;
+}
+
+button:hover{
+    transform:scale(1.02);
+}
+
+button:active{
+    transform:scale(0.98);
+}
+
+/* CASE */
+
+.case-container{
+    position:relative;
+
+    margin-top:22px;
+
+    height:120px;
+
+    overflow:hidden;
+
+    border-radius:20px;
+
+    background:black;
+
+    border:2px solid rgba(255,255,255,0.08);
+}
+
+.case-line{
+    position:absolute;
+
+    left:50%;
+    top:0;
+
+    transform:translateX(-50%);
+
+    width:4px;
+    height:100%;
+
+    background:#00e5ff;
+
+    z-index:100;
+
+    box-shadow:
+    0 0 15px #00e5ff,
+    0 0 30px #00e5ff;
+}
+
+.case-items{
+    position:absolute;
+    left:0;
+    top:0;
+
+    height:100%;
+
+    display:flex;
+    align-items:center;
+}
+
+.item{
+    width:170px;
+    height:80px;
+
+    margin:0 10px;
+
+    border-radius:16px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #2d2d2d,
+        #1b1b1b
+    );
+
+    border:2px solid rgba(255,255,255,0.08);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:18px;
+    font-weight:bold;
+
+    flex-shrink:0;
+}
+
+/* RESULT */
+
+.result{
+    margin-top:22px;
+
+    min-height:90px;
+
+    border-radius:20px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #09113d,
+        #1f274f
+    );
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+
+    gap:20px;
+
+    font-size:24px;
+    font-weight:bold;
+
+    padding:20px;
+
+    text-align:center;
+}
+
+/* WHEEL */
+
+.wheel-wrap{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:25px;
+}
+
+.wheel-box{
+    position:relative;
+}
+
+.arrow{
+    position:absolute;
+
+    top:-12px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:0;
+    height:0;
+
+    border-left:22px solid transparent;
+    border-right:22px solid transparent;
+
+    border-top:45px solid #ff0000;
+
+    z-index:100;
+}
+
+#wheel{
+    width:500px;
+    height:500px;
+
+    border-radius:50%;
+
+    background:#111;
+
+    border:8px solid rgba(255,255,255,0.08);
+}
+
+@media(max-width:700px){
+
+    .title{
+        font-size:34px;
+    }
+
+    #wheel{
+        width:340px;
+        height:340px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="tab active" data-page="two">
+🔥 2 СЛОВА
+</div>
+
+<div class="tab" data-page="one">
+⚡ 1 СЛОВО
+</div>
+
+<div class="tab" data-page="wheelPage">
+🎡 КОЛЕСО
+</div>
+
+</header>
+
+<!-- TWO -->
+
+<div class="page active" id="two">
+
+<div class="title">
+типо генератор рандома труе братан
+</div>
+
+<div class="grid" id="twoGrid"></div>
+
+</div>
+
+<!-- ONE -->
+
+<div class="page" id="one">
+
+<div class="title">
+типо генератор рандома труе братан
+</div>
+
+<div class="grid" id="oneGrid"></div>
+
+</div>
+
+<!-- WHEEL -->
+
+<div class="page" id="wheelPage">
+
+<div class="title">
+типо генератор рандома труе братан
+</div>
+
+<div class="wheel-wrap">
+
+<div class="wheel-box">
+
+<div class="arrow"></div>
+
+<canvas
+id="wheel"
+width="500"
+height="500">
+</canvas>
+
+</div>
+
+<textarea
+id="wheelInput"
+placeholder="Пиши слова через Enter"></textarea>
+
+<button onclick="spinWheel()">
+КРУТИТЬ
+</button>
+
+<div
+class="result"
+id="wheelResult">
+...
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+/* TABS */
+
+document.querySelectorAll(".tab")
+.forEach(tab=>{
+
+    tab.onclick = ()=>{
+
+        document.querySelectorAll(".tab")
+        .forEach(t=>t.classList.remove("active"));
+
+        document.querySelectorAll(".page")
+        .forEach(p=>p.classList.remove("active"));
+
+        tab.classList.add("active");
+
+        document
+        .getElementById(tab.dataset.page)
+        .classList.add("active");
+    };
+});
+
+/* RANDOM */
+
+function random(max){
+
+    return crypto
+    .getRandomValues(new Uint32Array(1))[0] % max;
+}
+
+/* CREATE ITEM */
+
+function createItem(text){
+
+    const item =
+    document.createElement("div");
+
+    item.className = "item";
+
+    item.innerText = text;
+
+    return item;
+}
+
+/* ========================= */
+/* 2 WORDS */
+/* ========================= */
+
+const twoGrid =
+document.getElementById("twoGrid");
+
+for(let i=1;i<=10;i++){
+
+    const card =
+    document.createElement("div");
+
+    card.className = "card";
+
+    card.innerHTML = `
+
+        <h2>
+        ГЕНЕРАТОР ${i}
+        </h2>
+
+        <textarea
+        placeholder="Введи слова через Enter"></textarea>
+
+        <button>
+        СГЕНЕРИРОВАТЬ
+        </button>
+
+        <div class="case-container">
+            <div class="case-line"></div>
+            <div class="case-items first"></div>
+        </div>
+
+        <div class="case-container">
+            <div class="case-line"></div>
+            <div class="case-items second"></div>
+        </div>
+
+        <div class="result">
+        ...
+        </div>
+    `;
+
+    const textarea =
+    card.querySelector("textarea");
+
+    const button =
+    card.querySelector("button");
+
+    const first =
+    card.querySelector(".first");
+
+    const second =
+    card.querySelector(".second");
+
+    const result =
+    card.querySelector(".result");
+
+    button.onclick = ()=>{
+
+        const words =
+        textarea.value
+        .split("\n")
+        .map(x=>x.trim())
+        .filter(x=>x);
+
+        if(words.length < 2){
+
+            result.innerHTML =
+            "НУЖНО 2+ СЛОВА";
+
+            return;
+        }
+
+        first.innerHTML = "";
+        second.innerHTML = "";
+
+        const WIN_INDEX = 30;
+
+        const winner1 =
+        words[random(words.length)];
+
+        let winner2 =
+        words[random(words.length)];
+
+        while(winner2 === winner1){
+
+            winner2 =
+            words[random(words.length)];
+        }
+
+        for(let j=0;j<60;j++){
+
+            let word1 =
+            words[random(words.length)];
+
+            let word2 =
+            words[random(words.length)];
+
+            if(j === WIN_INDEX){
+
+                word1 = winner1;
+                word2 = winner2;
+            }
+
+            first.appendChild(
+                createItem(word1)
+            );
+
+            second.appendChild(
+                createItem(word2)
+            );
+        }
+
+        const target =
+        (WIN_INDEX * 190) - 85;
+
+        first.style.transition =
+        "none";
+
+        second.style.transition =
+        "none";
+
+        first.style.transform =
+        "translateX(0px)";
+
+        second.style.transform =
+        "translateX(0px)";
+
+        setTimeout(()=>{
+
+            first.style.transition =
+            "transform 5s cubic-bezier(0.08,0.8,0.2,1)";
+
+            second.style.transition =
+            "transform 5s cubic-bezier(0.08,0.8,0.2,1)";
+
+            first.style.transform =
+            `translateX(-${target}px)`;
+
+            second.style.transform =
+            `translateX(-${target}px)`;
+
+        },50);
+
+        setTimeout(()=>{
+
+            result.innerHTML = `
+                🔥 ${winner1}
+                <br>
+                ⚡ ${winner2}
+            `;
+
+        },5200);
+    };
+
+    twoGrid.appendChild(card);
+}
+
+/* ========================= */
+/* 1 WORD */
+/* ========================= */
+
+const oneGrid =
+document.getElementById("oneGrid");
+
+for(let i=1;i<=10;i++){
+
+    const card =
+    document.createElement("div");
+
+    card.className = "card";
+
+    card.innerHTML = `
+
+        <h2>
+        ГЕНЕРАТОР ${i}
+        </h2>
+
+        <textarea
+        placeholder="Введи слова через Enter"></textarea>
+
+        <button>
+        СГЕНЕРИРОВАТЬ
+        </button>
+
+        <div class="case-container">
+            <div class="case-line"></div>
+            <div class="case-items line"></div>
+        </div>
+
+        <div class="result">
+        ...
+        </div>
+    `;
+
+    const textarea =
+    card.querySelector("textarea");
+
+    const button =
+    card.querySelector("button");
+
+    const line =
+    card.querySelector(".line");
+
+    const result =
+    card.querySelector(".result");
+
+    button.onclick = ()=>{
+
+        const words =
+        textarea.value
+        .split("\n")
+        .map(x=>x.trim())
+        .filter(x=>x);
+
+        if(words.length < 1){
+
+            result.innerHTML =
+            "НЕТ СЛОВ";
+
+            return;
+        }
+
+        line.innerHTML = "";
+
+        const WIN_INDEX = 30;
+
+        const winner =
+        words[random(words.length)];
+
+        for(let j=0;j<60;j++){
+
+            let word =
+            words[random(words.length)];
+
+            if(j === WIN_INDEX){
+
+                word = winner;
+            }
+
+            line.appendChild(
+                createItem(word)
+            );
+        }
+
+        const target =
+        (WIN_INDEX * 190) - 85;
+
+        line.style.transition =
+        "none";
+
+        line.style.transform =
+        "translateX(0px)";
+
+        setTimeout(()=>{
+
+            line.style.transition =
+            "transform 5s cubic-bezier(0.08,0.8,0.2,1)";
+
+            line.style.transform =
+            `translateX(-${target}px)`;
+
+        },50);
+
+        setTimeout(()=>{
+
+            result.innerHTML =
+            `⚡ ${winner}`;
+
+        },5200);
+    };
+
+    oneGrid.appendChild(card);
+}
+
+/* ========================= */
+/* WHEEL */
+/* ========================= */
+
+const canvas =
+document.getElementById("wheel");
+
+const ctx =
+canvas.getContext("2d");
+
+let wheelRotation = 0;
+
+const wheelColors = [
+    "#00c3ff",
+    "#0051ff",
+    "#00d9ff",
+    "#0040ff",
+    "#33cfff",
+    "#2255ff",
+    "#00bfff",
+    "#003cff"
+];
+
+/* DRAW */
+
+function drawWheel(words){
+
+    const size =
+    canvas.width;
+
+    const center =
+    size / 2;
+
+    const radius =
+    size / 2;
+
+    ctx.clearRect(
+        0,
+        0,
+        size,
+        size
+    );
+
+    const slice =
+    (Math.PI * 2) / words.length;
+
+    for(let i=0;i<words.length;i++){
+
+        const start =
+        i * slice;
+
+        const end =
+        start + slice;
+
+        ctx.beginPath();
+
+        ctx.moveTo(
+            center,
+            center
+        );
+
+        ctx.arc(
+            center,
+            center,
+            radius,
+            start,
+            end
+        );
+
+        ctx.closePath();
+
+        ctx.fillStyle =
+        wheelColors[
+            i % wheelColors.length
+        ];
+
+        ctx.fill();
+
+        ctx.strokeStyle =
+        "rgba(255,255,255,0.15)";
+
+        ctx.lineWidth = 3;
+
+        ctx.stroke();
+
+        /* TEXT */
+
+        ctx.save();
+
+        ctx.translate(
+            center,
+            center
+        );
+
+        ctx.rotate(
+        start + slice / 2
+        );
+
+        ctx.fillStyle =
+        "white";
+
+        ctx.font =
+        "bold 18px Orbitron";
+
+        ctx.textAlign =
+        "right";
+
+        ctx.textBaseline =
+        "middle";
+
+        let text =
+        words[i];
+
+        if(text.length > 12){
+
+            text =
+            text.slice(0,12) + "...";
+        }
+
+        ctx.fillText(
+            text,
+            radius - 30,
+            0
+        );
+
+        ctx.restore();
+    }
+
+    /* CENTER */
+
+    ctx.beginPath();
+
+    ctx.arc(
+        center,
+        center,
+        25,
+        0,
+        Math.PI * 2
+    );
+
+    ctx.fillStyle =
+    "#0a0a0a";
+
+    ctx.fill();
+
+    ctx.strokeStyle =
+    "#00d9ff";
+
+    ctx.lineWidth = 4;
+
+    ctx.stroke();
+}
+
+drawWheel([
+    "apple",
+    "banana",
+    "fire",
+    "ice"
+]);
+
+/* SPIN */
+let currentRotation = 0;
+
+function spinWheel(){
+
+    const input =
+    document.getElementById("wheelInput");
+
+    const result =
+    document.getElementById("wheelResult");
+
+    const words =
+    input.value
+    .split("\n")
+    .map(x=>x.trim())
+    .filter(x=>x);
+
+    if(words.length < 2){
+
+        result.innerHTML =
+        "НУЖНО 2+ СЛОВА";
+
+        return;
+    }
+
+    drawWheel(words);
+
+    /*
+    УГОЛ СЕКТОРА
+    */
+
+    const sector =
+    360 / words.length;
+
+    /*
+    СЛУЧАЙНЫЙ ФИНАЛЬНЫЙ УГОЛ
+    */
+
+    const spins =
+    360 * (8 + random(5));
+
+    const randomAngle =
+    random(360);
+
+    currentRotation +=
+    spins + randomAngle;
+
+    /*
+    КРУТИМ
+    */
+
+    canvas.style.transition =
+    "transform 5s cubic-bezier(0.12,0.8,0.18,1)";
+
+    canvas.style.transform =
+    `rotate(${currentRotation}deg)`;
+
+    /*
+    ПОСЛЕ ОСТАНОВКИ
+    СЧИТАЕМ ЧТО ПОД СТРЕЛКОЙ
+    */
+
+    setTimeout(()=>{
+
+        /*
+        НОРМАЛЬНЫЙ УГОЛ
+        */
+
+        const normalized =
+        ((currentRotation % 360) + 360) % 360;
+
+        /*
+        СТРЕЛКА СВЕРХУ
+        = 270°
+        */
+
+        const pointer =
+        (270 - normalized + 360) % 360;
+
+        /*
+        ИНДЕКС
+        */
+
+        const index =
+        Math.floor(pointer / sector) % words.length;
+
+        /*
+        РЕАЛЬНЫЙ ПОБЕДИТЕЛЬ
+        */
+
+        const winner =
+        words[index];
+
+        result.innerHTML =
+        `🎉 ${winner}`;
+
+    },5200);
+}
+
+
+</script>
+
+</body>
+</html>
